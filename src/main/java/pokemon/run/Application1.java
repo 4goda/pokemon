@@ -1,4 +1,6 @@
-package pokemon.main;
+package pokemon.run;
+
+import pokemon.DTO.StartingPokemon;
 
 import java.util.Scanner;
 
