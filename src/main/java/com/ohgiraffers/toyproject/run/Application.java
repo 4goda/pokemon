@@ -1,6 +1,7 @@
 package com.ohgiraffers.toyproject.run;
 
 import com.ohgiraffers.toyproject.original.DTO.Game;
+import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.GameService;
 
 import java.util.Scanner;
@@ -8,6 +9,7 @@ import java.util.Scanner;
 public class Application {
 
     private static final GameService gs = new GameService();
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
