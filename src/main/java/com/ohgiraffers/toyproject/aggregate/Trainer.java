@@ -11,7 +11,7 @@ public class Trainer implements Serializable {
 
         private TrainerBag trainerBag;                             // 트레이너 가방
 
-//        private Pokemon[] trainerPokemons = new Pokemon[6];        // 트레이너가 보유한 포켓몬
+        private Pokemon[] trainerPokemons = new Pokemon[6];        // 트레이너가 보유한 포켓몬
 
         public Trainer() {
         }
@@ -45,21 +45,20 @@ public class Trainer implements Serializable {
                 this.trainerBag = trainerBag;
         }
 
-//        public Pokemon[] getTrainerPokemons() {
-//                return trainerPokemons;
-//        }
-//
-//        public void setTrainerPokemons(Pokemon[] trainerPokemons) {
-//                this.trainerPokemons = trainerPokemons;
-//        }
+        public Pokemon[] getTrainerPokemons() {
+                return trainerPokemons;
+        }
+
+        public void setTrainerPokemons(Pokemon[] trainerPokemons) {
+                this.trainerPokemons = trainerPokemons;
+        }
 
         @Override
         public String toString() {
                 return "Trainer{" +
                         "trainerNo=" + trainerNo +
                         ", trainerName='" + trainerName + '\'' +
-                        ", trainerBag=" + trainerBag +
-//                        ", trainerPokemons=" + Arrays.toString(trainerPokemons) +
+                        ", trainerPokemons=" + Arrays.toString(trainerPokemons) +
                         '}';
         }
 }
