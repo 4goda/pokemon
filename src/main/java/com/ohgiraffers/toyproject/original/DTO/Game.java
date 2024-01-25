@@ -1,9 +1,5 @@
-package pokemon.com.ohgiraffers.DTO;
+package com.ohgiraffers.toyproject.original.DTO;
 
-import pokemon.com.ohgiraffers.interfaces.Pokemon;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -86,9 +82,6 @@ public class Game {
             }
         }
     }
-
-    // 몬스터볼 포획 확률 설정(?).
-
 
 
 }
