@@ -16,12 +16,14 @@ public class TrainerService {
         int select = sc.nextInt();
 
         switch (select) {
-            case 1:
+            case 1: this.orderAttack();
                 break;
-            case 2:
+            case 2: this.openBag();
                 break;
             case 3:
-                break;
+                System.out.println("배틀을 종료합니다");
+                System.out.println("무사히 도망쳤습니다!");
+                return;
         }
     }
 
@@ -53,12 +55,13 @@ public class TrainerService {
         System.out.print("1. 회복약 사용 2. 몬스터볼 사용 3. 갯수 확인");
         int item = sc2.nextInt();
         switch (item) {
-            case 1:
+            case 1: this.useHealItem();
                 break;
-            case 2:
+            case 2: this.throwingBall();
                 break;
             case 3:
-                /* ("현재 사용가능한 갯수는 회복약 \'" + + "\'개, 몬스터볼 \'" + + "\'개 입니다." ) */
+                System.out.println("현재 사용가능한 갯수는 회복약 \'" + TrainerBag.getHealItemConut() + "\'개," +
+                        " 몬스터볼 \'" + TrainerBag.getMonsterBallCount() + "\'개 입니다." );
                 break;
         }
     }
