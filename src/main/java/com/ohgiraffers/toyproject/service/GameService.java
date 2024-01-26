@@ -15,7 +15,7 @@ public class GameService {
     }
 
 
-    public void startNewGame() {
+    /*public void startNewGame() {
         Scanner sc = new Scanner(System.in);
         System.out.print("포켓몬 트레이너의 이름을 작성해주세요 : ");
 
@@ -31,10 +31,10 @@ public class GameService {
         final BattleService bs = new BattleService();
         // 설명. 배틀 시작
         bs.startBattle(battle);
-    }
+    }*/
 
 
-    private void selectStartingPokemon() {
+    public void selectStartingPokemon() {
         Scanner sc = new Scanner(System.in);
 
         // TODO pokemon은 추후에 객체로 바꿔야 함
