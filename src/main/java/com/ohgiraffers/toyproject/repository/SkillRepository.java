@@ -26,7 +26,7 @@ public class SkillRepository {
 
             saveSkills(skills);
         }
-        
+
         loadSkills();
     }
 
