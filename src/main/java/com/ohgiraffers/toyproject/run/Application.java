@@ -4,6 +4,7 @@ import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.original.DTO.Game;
 import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.GameService;
+import com.ohgiraffers.toyproject.service.SkillService;
 
 import java.util.Scanner;
 

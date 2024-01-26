@@ -1,6 +1,8 @@
 package com.ohgiraffers.toyproject.aggregate;
 
-public class Skill {
+import java.io.Serializable;
+
+public class Skill implements Serializable {
     private String name;        // 스킬 이름
     private int damage;         // 스킬 데미지
     private String type;        // 스킬 타입
