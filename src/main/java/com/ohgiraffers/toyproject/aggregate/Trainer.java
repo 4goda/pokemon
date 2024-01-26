@@ -1,7 +1,5 @@
 package com.ohgiraffers.toyproject.aggregate;
 
-import com.ohgiraffers.toyproject.original.interfaces.Pokemon;
-
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -14,6 +12,7 @@ public class Trainer implements Serializable {
         private Pokemon[] trainerPokemons = new Pokemon[6];        // 트레이너가 보유한 포켓몬
 
         public Trainer() {
+                trainerBag = new TrainerBag();
         }
 
         public Trainer(int trainerNo, String trainerName) {
@@ -52,6 +51,8 @@ public class Trainer implements Serializable {
         public void setTrainerPokemons(Pokemon[] trainerPokemons) {
                 this.trainerPokemons = trainerPokemons;
         }
+
+        public void setTrainerPokemon(Pokemon pokemon) { trainerPokemons[0] = pokemon; }
 
         @Override
         public String toString() {

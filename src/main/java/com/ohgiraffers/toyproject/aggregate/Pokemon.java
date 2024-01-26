@@ -7,7 +7,7 @@ public abstract class Pokemon {
     public static final String DEFAULT_SKILL = "몸통 박치기";
     private String name;
     private String sound;
-    private int hp;
+    private int hp = 0;
     private boolean isAlive;
 
     public Pokemon() {
@@ -18,6 +18,10 @@ public abstract class Pokemon {
         this.sound = sound;
         this.hp = hp;
         this.isAlive = true;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public abstract String attack(int skillNum);
