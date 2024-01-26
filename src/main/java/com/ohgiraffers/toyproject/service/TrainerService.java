@@ -5,12 +5,32 @@ import com.ohgiraffers.toyproject.aggregate.TrainerBag;
 import java.util.Scanner;
 
 public class TrainerService {
+
+    public void battleSellect() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. 싸운다");
+        System.out.println("2. 가방");
+        System.out.println("3. 도망간다");
+        System.out.println("------------");
+        System.out.print("나는! : ");
+        int select = sc.nextInt();
+
+        switch (select) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+    }
+
     // 싸우기
     public void orderAttack() {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc1 = new Scanner(System.in);
         System.out.print("포켓몬 기술 선택: ");
-        int input = sc.nextInt();
-        switch (input) {
+        int skill = sc1.nextInt();
+        switch (skill) {
             case 1:
                 /* 포켓몬 공격1 */
                 break;
@@ -29,10 +49,10 @@ public class TrainerService {
 
     //가방 열기
     public void openBag() {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
         System.out.print("1. 회복약 사용 2. 몬스터볼 사용 3. 갯수 확인");
-        int input = sc.nextInt();
-        switch (input) {
+        int item = sc2.nextInt();
+        switch (item) {
             case 1:
                 break;
             case 2:
