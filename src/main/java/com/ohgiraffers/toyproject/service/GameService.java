@@ -1,6 +1,7 @@
 package com.ohgiraffers.toyproject.service;
 
 import com.ohgiraffers.toyproject.aggregate.Battle;
+import com.ohgiraffers.toyproject.aggregate.Trainer;
 import com.ohgiraffers.toyproject.repository.GameRepository;
 
 import java.util.Scanner;
@@ -19,7 +20,8 @@ public class GameService {
         System.out.print("포켓몬 트레이너의 이름을 작성해주세요 : ");
 
         // TODO. 트레이너 객체 추가 되면 트레이너 팀이 수정해주세요
-        sc.nextLine();
+        String name = sc.nextLine();
+        Trainer trainer = new Trainer(1, name);
 
         // 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작
         selectStartingPokemon();
