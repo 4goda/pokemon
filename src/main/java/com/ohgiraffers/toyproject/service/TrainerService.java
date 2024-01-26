@@ -1,12 +1,19 @@
 package com.ohgiraffers.toyproject.service;
 
-import com.ohgiraffers.toyproject.aggregate.TrainerBag;
+import com.ohgiraffers.toyproject.aggregate.*;
+import com.ohgiraffers.toyproject.repository.PokemonRepository;
 
 import java.util.Scanner;
 
+
 public class TrainerService {
 
+    private final PokemonRepository pr = new PokemonRepository();
+    private Pokemon selectedPokemon;
+
     public void battleSellect() {
+        selectedPokemon = pr.selectPokemon(0);   // 배틀 포켓몬 선택이 선행되어야 함 pokemonList의 idx 선택
+
         Scanner sc = new Scanner(System.in);
         System.out.println("1. 싸운다");
         System.out.println("2. 가방");
@@ -16,7 +23,7 @@ public class TrainerService {
         int select = sc.nextInt();
 
         switch (select) {
-            case 1: this.orderAttack();
+            case 1: this.orderAttack(selectedPokemon);
                 break;
             case 2: this.openBag();
                 break;
@@ -28,20 +35,13 @@ public class TrainerService {
     }
 
     // 싸우기
-    public void orderAttack() {
+    public void orderAttack(Pokemon pokemon) {
         Scanner sc1 = new Scanner(System.in);
         System.out.print("포켓몬 기술 선택: ");
         int skill = sc1.nextInt();
-        switch (skill) {
-            case 1:
-                /* 포켓몬 공격1 */
-                break;
-            case 2:
-                /* 포켓몬 공격2 */
-                break;
-        }
-        System.out.println("가 공격을 명령합니다.");    // 포켓몬 기술과 기술 메소드에서 받아서 사용
-    }
+        String skillName = pokemon.attack(skill);
+        System.out.println(skillName + "공격을 명령합니다.");    // 포켓몬 기술과 기술 메소드에서 받아서 사용
+    } // 게임에서 선택한 pokemon 객체에서 attack 함수 실행
 
     // 도망가기
     public void runAway() {
