@@ -23,25 +23,11 @@ public class Trainer implements Serializable {
         public int getTrainerNo() {
                 return trainerNo;
         }
-
-        public void setTrainerNo(int trainerNo) {
-                this.trainerNo = trainerNo;
-        }
-
         public String getTrainerName() {
                 return trainerName;
         }
-
-        public void setTrainerName(String trainerName) {
-                this.trainerName = trainerName;
-        }
-
         public TrainerBag getTrainerBag() {
                 return trainerBag;
-        }
-
-        public void setTrainerBag(TrainerBag trainerBag) {
-                this.trainerBag = trainerBag;
         }
 
         public Pokemon[] getTrainerPokemons() {
@@ -54,6 +40,9 @@ public class Trainer implements Serializable {
 
         public void setTrainerPokemon(Pokemon pokemon) { trainerPokemons[0] = pokemon; }
 
+        public Pokemon getTrainerFirstPokemon() {
+                return trainerPokemons[0];
+        }
         @Override
         public String toString() {
                 return "Trainer{" +
@@ -62,4 +51,5 @@ public class Trainer implements Serializable {
                         ", trainerPokemons=" + Arrays.toString(trainerPokemons) +
                         '}';
         }
+
 }

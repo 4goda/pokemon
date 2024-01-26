@@ -23,16 +23,17 @@ public class SkillService {
         }
     }
 
-    public void selectSkill(String name) {
+    public int selectSkill(String name) {
         Skill selectedSkill = sr.selectSkill(name);
 
         if(selectedSkill != null) {
             System.out.println("조회한 스킬은 : " + selectedSkill);
             int calcDamage = calculateSkillDamage(selectedSkill);
             System.out.println("저장된 데미지 : " + selectedSkill.getDamage() + ", " + "계산된 데미지 : " + calcDamage);
-        } else {
-            System.out.println("존재하지 않는 스킬 이름 입니다");
+            return calcDamage;
         }
+        System.out.println("존재하지 않는 스킬 이름 입니다");
+        return 0;
 
 
     }

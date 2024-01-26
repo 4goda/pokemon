@@ -35,6 +35,10 @@ public abstract class Pokemon {
         if(hp <= 0) isAlive = false;
     }
 
+    public boolean isAlive() {
+        return isAlive;
+    }
+
     public void run(){
         isAlive = false;
     }
