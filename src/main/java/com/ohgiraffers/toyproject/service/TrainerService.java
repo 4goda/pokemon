@@ -90,6 +90,8 @@ public class TrainerService {
     public void useHealItem() {
         TrainerBag.useHealItem();
         System.out.println("포켓몬을 회복시킵니다");
+        selectedPokemon = pr.selectPokemon(0);          // idx 선택 가능하도록 변경
+        selectedPokemon.healPokemon(50);            // recovery 값 변경 가능
         System.out.println("남은 회복약은" + TrainerBag.getHealItemConut() + "개 입니다.");
     }
 
