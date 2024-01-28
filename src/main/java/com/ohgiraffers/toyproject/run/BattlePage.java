@@ -51,7 +51,7 @@ public class BattlePage {
                 int calcDamage = ss.selectSkill(castingSkill);          // 스킬의 계산된 공격 데미지
                 bs.fightBattle(calcDamage, enemyPokemon);
                 break;
-            case 2: ts.openBag();
+            case 2: ts.openBag(selectedPokemon);
                 break;
             case 3:
                 System.out.println("배틀을 종료합니다");
