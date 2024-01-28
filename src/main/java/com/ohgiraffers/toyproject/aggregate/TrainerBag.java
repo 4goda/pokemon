@@ -23,15 +23,8 @@ public class TrainerBag {
         return monsterBallCount;
     }
 
-    public static void setMonsterBallCount(int monsterBallCount) {
-        TrainerBag.monsterBallCount = monsterBallCount;
-    }
-
     public static int getHealItemConut() {
         return healItemConut;
     }
 
-    public static void setHealItemConut(int healItemConut) {
-        TrainerBag.healItemConut = healItemConut;
-    }
 }
