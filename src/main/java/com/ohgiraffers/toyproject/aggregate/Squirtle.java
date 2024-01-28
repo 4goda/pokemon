@@ -10,8 +10,6 @@ public class Squirtle extends Pokemon {
 
     @Override
     public String specialAttack() {
-        return null;
+        return "물대포";
     }
-
-    // 기능 맵 어케 되는지?
 }
