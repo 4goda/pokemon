@@ -12,12 +12,18 @@ public abstract class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(String name, String sound, int hp, Attribute attribute) {
+    public Pokemon(String name, String sound, int hp, Attribute attribute, boolean isAlive) {
         this.name = name;
         this.sound = sound;
         this.hp = hp;
         this.attribute = attribute;
         this.isAlive = true;
+    }
+    public Pokemon(String name, String sound, int hp, Attribute attribute) {
+        this.name = name;
+        this.sound = sound;
+        this.hp = hp;
+        this.attribute = attribute;
     }
 
 
@@ -55,6 +61,7 @@ public abstract class Pokemon {
 
     public boolean isAlive() {
         return isAlive;
+    }
 
     public void healPokemon(int recovery){
         hp += recovery;

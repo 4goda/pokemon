@@ -3,6 +3,7 @@ package com.ohgiraffers.toyproject.run;
 import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
+import com.ohgiraffers.toyproject.repository.PokemonRepository;
 import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.GameService;
 
@@ -13,6 +14,10 @@ public class Application {
     private static final GameService gs = new GameService();
 
     public static void main(String[] args) {
+        PokemonRepository pr = new PokemonRepository();
+        System.out.println(pr.getPokemonList());
+
+
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("==========================");
