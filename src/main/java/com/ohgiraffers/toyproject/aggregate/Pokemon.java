@@ -28,6 +28,10 @@ public abstract class Pokemon {
         return sound;
     }
 
+    public String getIsAlive() {
+        return isAlive;
+    }
+    
     public String attack(int skillNum){
         if(skillNum == 1)
             return defaultAttack();
