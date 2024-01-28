@@ -11,6 +11,6 @@ public class Charmander extends Pokemon {
 
     @Override
     public String specialAttack() {
-        return null;
+        return "불꽃세례";
     }
 }
