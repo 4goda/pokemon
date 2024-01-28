@@ -4,7 +4,6 @@ import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
 import com.ohgiraffers.toyproject.repository.GameRepository;
-import com.ohgiraffers.toyproject.repository.PokemonRepository;
 
 import java.util.Scanner;
 
@@ -12,11 +11,10 @@ public class GameService {
 
     /* TODO. 아직 게임 저장/불러오기 없으니 GameService에서 대부분 처리한다 */
     private final GameRepository gr = new GameRepository();
-    private final PokemonRepository pr = new PokemonRepository();
 
     public GameService() {
     }
-
+    
     public Pokemon selectStartingPokemon() {
         Scanner sc = new Scanner(System.in);
 
@@ -71,11 +69,6 @@ public class GameService {
         Pokemon enemyPokemon = null;
         // enemyPokemon = 포켓몬 db에서 startingPokemon을 제외한 포켓몬 중 한 마리 선택
 
-        int idx = (int) (Math.random() * 3);
-        do {
-
-        }while (startingPokemon != enemyPokemon);
-
-            return enemyPokemon;
-    }
+        return enemyPokemon;
+    } 
 }

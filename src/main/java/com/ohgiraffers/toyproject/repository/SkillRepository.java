@@ -16,7 +16,7 @@ public class SkillRepository {
 
         File file = new File(filePath);
 
-        if (!file.exists()) {
+        if(!file.exists()){
             skills.add(new Skill("몸통박치기", 20, "노멀"));
             skills.add(new Skill("100만볼트", 30, "전기"));
             skills.add(new Skill("불꽃세례", 30, "불"));
@@ -30,7 +30,7 @@ public class SkillRepository {
         loadSkills();
     }
 
-    private void saveSkills(List<Skill> skills) {
+    public void  saveSkills(List<Skill> skills) {
         ObjectOutputStream oos = null;
 
         try {
@@ -38,16 +38,16 @@ public class SkillRepository {
                     new BufferedOutputStream(
                             new FileOutputStream(filePath)));
 
-            for (Skill s : skills) {
+            for(Skill s : skills) {
                 oos.writeObject(s);
             }
 
             oos.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
+        }finally {
             try {
-                if (oos != null) oos.close();
+                if(oos != null) oos.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -73,7 +73,7 @@ public class SkillRepository {
             throw new RuntimeException(e);
         } finally {
             try {
-                if (ois != null) ois.close();
+                if(ois != null) ois.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -85,8 +85,8 @@ public class SkillRepository {
     }
 
     public Skill selectSkill(String name) {
-        for (Skill s : skillList) {
-            if (s.getName().equals(name)) return s;
+        for(Skill s : skillList) {
+            if(s.getName().equals(name)) return s;
         }
 
         return null;
