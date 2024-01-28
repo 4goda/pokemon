@@ -35,7 +35,7 @@ public abstract class Pokemon {
         return sound;
     }
 
-    public String getIsAlive() {
+    public boolean getIsAlive() {
         return isAlive;
     }
     
