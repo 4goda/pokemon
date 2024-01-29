@@ -4,6 +4,7 @@ import com.ohgiraffers.toyproject.aggregate.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PokemonRepository {
@@ -67,7 +68,9 @@ public class PokemonRepository {
                 pokemonList.add((Pokemon) ois.readObject());
             }
 
+
         } catch (EOFException e) {
+            System.out.println("pokemonList = " + pokemonList);
             System.out.println("포켓몬 정보 로딩 완료");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -83,9 +86,10 @@ public class PokemonRepository {
     }
 
 
-    public Pokemon selectPokemon(int idx) {
+    public Pokemon selectPokemon(String pokemonName) {
         for (int i = 0; i < pokemonList.size(); i++) {
-            if (idx == i) return pokemonList.get(i);
+            // 포켓몬 DB에서 이름으로 객체 반환
+            if(pokemonList.get(i).getName().equals(pokemonName)) return pokemonList.get(i);
         }
 
         return null;

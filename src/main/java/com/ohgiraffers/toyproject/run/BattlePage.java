@@ -32,13 +32,14 @@ public class BattlePage {
         Pokemon selectedPokemon = pr.selectPokemon(trainer.getTrainerPokemon(0));
 
         //while(bs.endBattle() 호출 될 때까지){
-        battleSelect(selectedPokemon);
+        selectTrainerOrder(selectedPokemon);
+
         // 적 포켓몬의 공격
         bs.endBattle(trainer.getTrainerName(), selectedPokemon, enemyPokemon);
         // while문 종료 }
     }
 
-    private void battleSelect(Pokemon selectedPokemon) {
+    private void selectTrainerOrder(Pokemon selectedPokemon) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("1. 싸운다");

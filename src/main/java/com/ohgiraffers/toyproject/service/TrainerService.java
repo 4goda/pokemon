@@ -9,9 +9,8 @@ import java.util.Scanner;
 public class TrainerService {
     Trainer trainer = null;
     private PokemonRepository pr = new PokemonRepository();
-    private Pokemon selectedPokemon = pr.selectPokemon(trainer.getTrainerPokemon(0));
-    // 트레이너 객체 생성?
-    
+    private Pokemon selectedPokemon;
+
     // 싸우기
     public String orderAttack(Pokemon pokemon) {
         // TODO. pokemon의 기술 목록 가져오기 (pokemon.getSkills())
@@ -38,8 +37,8 @@ public class TrainerService {
         return null;
     }
     
-    public void battleSellect() {
-        selectedPokemon = pr.selectPokemon(0);   // 배틀 포켓몬 선택이 선행되어야 함 pokemonList의 idx 선택
+    /*public void selectBattle() {
+        selectedPokemon = pr.selectPokemon();   // 배틀 포켓몬 선택이 선행되어야 함 pokemonList의 idx 선택
 
         Scanner sc = new Scanner(System.in);
         System.out.println("1. 싸운다");
@@ -59,7 +58,7 @@ public class TrainerService {
                 System.out.println("무사히 도망쳤습니다!");
                 return;
         }
-    }
+    }*/
 
     // 싸우기
 //     public void orderAttack(Pokemon pokemon) {

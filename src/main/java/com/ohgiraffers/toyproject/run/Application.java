@@ -28,7 +28,6 @@ public class Application {
 
             switch (input) {
                 case 1:
-//                    gs.startNewGame();
                     startNewGame();
                     break;
                 case 2:
@@ -56,15 +55,20 @@ public class Application {
         trainer = new Trainer(1, name);
 
         // 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작
-        int startingPokemon = gs.selectStartingPokemon();
+        Pokemon startingPokemon = gs.selectStartingPokemon();
+        System.out.println("startingPokemon = " + startingPokemon);
         trainer.setTrainerPokemon(startingPokemon);
+        System.out.println("trainer = " + trainer);
 
-        int enemyPokemon = gs.getEnemyPokemon(startingPokemon);
 
-        Battle battle = Battle.getInstance();
+        Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
 
-        BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);
-        battlePage.battlePhase();
+        System.out.println("enemyPokemon = " + enemyPokemon);
+
+//        Battle battle = Battle.getInstance();
+//
+//        BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);
+//        battlePage.battlePhase();
 
 //        final BattleService bs = new BattleService();
 //        // 설명. 배틀 시작

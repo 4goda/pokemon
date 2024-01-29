@@ -12,7 +12,8 @@ public class Trainer implements Serializable {
 
         private TrainerBag trainerBag;                             // 트레이너 가방
 
-        private List<Integer> trainerPokemons = new ArrayList<>();        // 트레이너가 보유한 포켓몬(pr에 저장된 인덱스)
+//        private List<Integer> trainerPokemons = new ArrayList<>();        // 트레이너가 보유한 포켓몬(pr에 저장된 인덱스)
+        private List<Pokemon> trainerPokemons = new ArrayList<>();        // 트레이너가 보유한 포켓몬(pr에 저장된 인덱스)
 
         public Trainer() {
                 trainerBag = new TrainerBag();
@@ -35,18 +36,21 @@ public class Trainer implements Serializable {
                 return trainerBag;
         }
 
-        public List<Integer> getTrainerPokemons() {
+//        public List<Integer> getTrainerPokemons() {
+//                return trainerPokemons;
+//        }
+        public List<Pokemon> getTrainerPokemons() {
                 return trainerPokemons;
         }
 
-        public void setTrainerPokemons(List<Integer> trainerPokemons) {
+        public void setTrainerPokemons(List<Pokemon> trainerPokemons) {
                 this.trainerPokemons = trainerPokemons;
         }
 
-        public void setTrainerPokemon(int pokemonIdx) { trainerPokemons.add(pokemonIdx); }
+        public void setTrainerPokemon(Pokemon pokemon) { trainerPokemons.add(pokemon); }
 
 
-        public int getTrainerPokemon(int idx) { return trainerPokemons.get(idx); }
+        public String getTrainerPokemon(int idx) { return trainerPokemons.get(idx).getName(); }
 
 //        public static int getTrainerFirstPokemon() {
 //                return trainerPokemons.get(0);

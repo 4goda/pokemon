@@ -1,6 +1,9 @@
 package com.ohgiraffers.toyproject.aggregate;
 
-public abstract class Pokemon {
+import java.io.Serializable;
+import java.util.Objects;
+
+public abstract class Pokemon implements Serializable {
 
     public static final String DEFAULT_SKILL = "몸통 박치기";
     private String name;
@@ -70,4 +73,27 @@ public abstract class Pokemon {
         isAlive = false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pokemon pokemon = (Pokemon) o;
+        return hp == pokemon.hp && isAlive == pokemon.isAlive && Objects.equals(name, pokemon.name) && Objects.equals(sound, pokemon.sound) && attribute == pokemon.attribute;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, sound, hp, isAlive, attribute);
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "name='" + name + '\'' +
+                ", sound='" + sound + '\'' +
+                ", hp=" + hp +
+                ", isAlive=" + isAlive +
+                ", attribute=" + attribute +
+                '}';
+    }
 }

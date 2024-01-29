@@ -1,6 +1,7 @@
 package com.ohgiraffers.toyproject.service;
 
 import com.ohgiraffers.toyproject.aggregate.Battle;
+import com.ohgiraffers.toyproject.aggregate.Pikachu;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
 import com.ohgiraffers.toyproject.repository.GameRepository;
@@ -13,11 +14,12 @@ public class GameService {
 
     /* TODO. 아직 게임 저장/불러오기 없으니 GameService에서 대부분 처리한다 */
     private final GameRepository gr = new GameRepository();
+    private final PokemonRepository pr = new PokemonRepository();
 
     public GameService() {
     }
     
-    public int selectStartingPokemon() {
+    public Pokemon selectStartingPokemon() {
         Scanner sc = new Scanner(System.in);
 
         // TODO pokemon은 추후에 객체로 바꿔야 함
@@ -39,25 +41,25 @@ public class GameService {
 
             switch (input) {
                 case 1:
-//                    pokemon = new "피카츄";
+//                    pokemon = new Pikachu();
+                    pokemon = pr.selectPokemon("피카츄");
                     System.out.println("가랏! 피카츄!     피까피까");
-                    break;
-//                    return pokemon;
+                    return pokemon;
                 case 2:
 //                    pokemon = new "파이리";
+                    pokemon = pr.selectPokemon("파이리");
                     System.out.println("가랏! 파이리!     파이파이");
-                    break;
-//                    return pokemon;
+                    return pokemon;
                 case 3:
 //                    pokemon = new "꼬부기";
+                    pokemon = pr.selectPokemon("꼬부기");
                     System.out.println("가랏! 꼬부기!     꼬북꼬북");
-                    break;
-//                    return pokemon;
+                    return pokemon;
                 case 4:
 //                    pokemon = new "이상해씨";
-                    System.out.println("가랏! 이상해씨!   이상이상");
-                    break;
-//                    return pokemon;
+                    pokemon = pr.selectPokemon("치코리타");
+                    System.out.println("가랏! 치코리타!   치코치코");
+                    return pokemon;
                 case 9:
                     System.out.println("다음에 다시 오려무나~");
                     break;
@@ -69,14 +71,13 @@ public class GameService {
 
     public Pokemon getEnemyPokemon(Pokemon startingPokemon) {
         Pokemon enemyPokemon = null;
-        PokemonRepository pr = new PokemonRepository();
         List<Pokemon> pokemonList = pr.getPokemonList();
 
-        int idx = (int) (Math.random() * pokemonList.size());
         // enemyPokemon = 포켓몬 db에서 startingPokemon을 제외한 포켓몬 중 한 마리 선택
         do {
-            enemyPokemon = pokemonList.get(idx);
-        }while (startingPokemon != enemyPokemon);
+            int random = (int) (Math.random() * pokemonList.size());
+            enemyPokemon = pokemonList.get(random);
+        }while (startingPokemon.equals(enemyPokemon));
 
         return enemyPokemon;
     }
