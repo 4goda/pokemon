@@ -13,4 +13,5 @@ public class Chikorita extends Pokemon {
     public String specialAttack() {
         return "잎날가르기";
     }
+
 }

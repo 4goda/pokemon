@@ -54,21 +54,19 @@ public class Application {
         String name = sc.nextLine();
         trainer = new Trainer(1, name);
 
+        System.out.println("트레이너의 이름은 : " + name + "입니다");
+        System.out.println();
+
         // 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작
         Pokemon startingPokemon = gs.selectStartingPokemon();
-        System.out.println("startingPokemon = " + startingPokemon);
-        trainer.setTrainerPokemon(startingPokemon);
-        System.out.println("trainer = " + trainer);
-
+        trainer.addTrainerPokemon(startingPokemon);
 
         Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
 
-        System.out.println("enemyPokemon = " + enemyPokemon);
+        Battle battle = Battle.getInstance();
 
-//        Battle battle = Battle.getInstance();
-//
-//        BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);
-//        battlePage.battlePhase();
+        BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);
+        battlePage.battlePhase();
 
 //        final BattleService bs = new BattleService();
 //        // 설명. 배틀 시작

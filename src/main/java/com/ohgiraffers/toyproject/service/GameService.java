@@ -33,7 +33,7 @@ public class GameService {
             System.out.println("1. 피카츄");
             System.out.println("2. 파이리");
             System.out.println("3. 꼬부기");
-            System.out.println("4. 이상해씨");
+            System.out.println("4. 치코리타");
             System.out.println("-------------------");
             System.out.println("9. 게임 종료");
             System.out.print("내가 선택할 포켓몬은! : ");

@@ -9,6 +9,7 @@ public abstract class Pokemon implements Serializable {
     private String name;
     private String sound;
     private int hp = 0;
+    private int maxHp = 0;
     private boolean isAlive;
     private Attribute attribute;
 
@@ -19,10 +20,14 @@ public abstract class Pokemon implements Serializable {
         this.name = name;
         this.sound = sound;
         this.hp = hp;
+        this.maxHp = hp;
         this.attribute = attribute;
         this.isAlive = true;
     }
 
+    public int getMaxHp() {
+        return maxHp;
+    }
 
     public String getName() {
         return name;
@@ -40,6 +45,10 @@ public abstract class Pokemon implements Serializable {
 
     public boolean getIsAlive() {
         return isAlive;
+    }
+
+    public int getHp() {
+        return hp;
     }
     
     public String attack(int skillNum){
@@ -66,7 +75,9 @@ public abstract class Pokemon implements Serializable {
 
     public void healPokemon(int recovery){
         hp += recovery;
-
+        if(hp >= maxHp) {
+            hp = maxHp;
+        }
     }
 
     public void run(){
@@ -96,4 +107,6 @@ public abstract class Pokemon implements Serializable {
                 ", attribute=" + attribute +
                 '}';
     }
+
+
 }

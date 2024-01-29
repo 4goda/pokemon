@@ -22,6 +22,7 @@ public class Trainer implements Serializable {
         public Trainer(int trainerNo, String trainerName) {
                 this.trainerNo = trainerNo;
                 this.trainerName = trainerName;
+                trainerBag = new TrainerBag();
         }
 
         public int getTrainerNo() {
@@ -47,7 +48,7 @@ public class Trainer implements Serializable {
                 this.trainerPokemons = trainerPokemons;
         }
 
-        public void setTrainerPokemon(Pokemon pokemon) { trainerPokemons.add(pokemon); }
+        public void addTrainerPokemon(Pokemon pokemon) { trainerPokemons.add(pokemon); }
 
 
         public String getTrainerPokemon(int idx) { return trainerPokemons.get(idx).getName(); }

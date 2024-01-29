@@ -17,7 +17,7 @@ public class SkillRepository {
         File file = new File(filePath);
 
         if(!file.exists()){
-            skills.add(new Skill("몸통박치기", 20, "노멀"));
+            skills.add(new Skill("몸통 박치기", 20, "노멀"));
             skills.add(new Skill("100만볼트", 30, "전기"));
             skills.add(new Skill("불꽃세례", 30, "불"));
             skills.add(new Skill("물대포", 30, "물"));

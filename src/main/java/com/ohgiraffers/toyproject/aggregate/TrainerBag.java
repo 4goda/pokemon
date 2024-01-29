@@ -3,15 +3,15 @@ package com.ohgiraffers.toyproject.aggregate;
 public class TrainerBag {
 
     // 트레이너는 몬스터볼과 회복약을 5개씩 보유(사용하면 Count--)
-    private static int monsterBallCount =5;
+    private int monsterBallCount =5;
 
-    private static int healItemConut = 5;
+    private int healItemConut = 5;
 
-    public static void useMonsterBall() {
+    public void useMonsterBall() {
         monsterBallCount--;
     }
 
-    public static void useHealItem() {
+    public void useHealItem() {
         healItemConut--;
     }
 
@@ -19,11 +19,11 @@ public class TrainerBag {
     public TrainerBag() {
     }
 
-    public static int getMonsterBallCount() {
+    public int getMonsterBallCount() {
         return monsterBallCount;
     }
 
-    public static int getHealItemConut() {
+    public int getHealItemConut() {
         return healItemConut;
     }
 

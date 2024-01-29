@@ -4,7 +4,7 @@ import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 
 public class BattleService {
-    public void fightBattle(int calcDamage, Pokemon pokemon) {
+    public void calcHp(int calcDamage, Pokemon pokemon) {
         /* TODO.
          *  포켓몬 객체들 중 하나라도 hp가 0이하로 내려갈 때까지 전투 진행
          *  전투 종료시 endBattle(battle, {이긴포켓몬 객체}.이름);
@@ -14,6 +14,11 @@ public class BattleService {
             return;
         }
         pokemon.receiveDamage(calcDamage);
+        if(!pokemon.getIsAlive()) {
+            System.out.println(pokemon.getName() + "이(가) 쓰러졌습니다");
+        }
+
+
     }
 
 
@@ -26,10 +31,10 @@ public class BattleService {
         String winnerPokemon = "";
         if(selectedPokemon.isAlive()){
             winnerPokemon = selectedPokemon.getName();
-            System.out.println(trainerName + "님의 " + winnerPokemon + "이 승리하였습니다~~~");
+            System.out.println(trainerName + "님의 " + winnerPokemon + " 이(가) " + enemeyPokemon.getName() + " 상대로 승리하였습니다^^");
         }else{
             winnerPokemon = enemeyPokemon.getName();
-            System.out.println("적 " + winnerPokemon + "에게 패배하였습니다");
+            System.out.println(trainerName + "님의 " + selectedPokemon.getName() + " 이(가) " + winnerPokemon + " 상대로 패배하였습니다ㅠㅠ");
         }
     }
 
