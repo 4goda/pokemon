@@ -3,6 +3,7 @@ package com.ohgiraffers.toyproject.run;
 import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
+import com.ohgiraffers.toyproject.repository.PokemonRepository;
 import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.SkillService;
 import com.ohgiraffers.toyproject.service.TrainerService;
@@ -13,6 +14,7 @@ public class BattlePage {
     private static final TrainerService ts = new TrainerService();
     private static final SkillService ss = new SkillService();
     private static final BattleService bs = new BattleService();
+    private PokemonRepository pr = new PokemonRepository();
 
     private Trainer trainer = null;
     private Pokemon enemyPokemon = null;
@@ -27,7 +29,7 @@ public class BattlePage {
 
     public void battlePhase() {
         // 설명. 제일 앞에있는 포켓몬을 꺼낸다
-        Pokemon selectedPokemon = trainer.getTrainerFirstPokemon();
+        Pokemon selectedPokemon = pr.selectPokemon(trainer.getTrainerPokemon(0));
 
         //while(bs.endBattle() 호출 될 때까지){
         battleSelect(selectedPokemon);
@@ -38,6 +40,7 @@ public class BattlePage {
 
     private void battleSelect(Pokemon selectedPokemon) {
         Scanner sc = new Scanner(System.in);
+
         System.out.println("1. 싸운다");
         System.out.println("2. 가방");
         System.out.println("3. 도망간다");

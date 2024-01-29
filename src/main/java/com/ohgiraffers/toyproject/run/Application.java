@@ -56,10 +56,10 @@ public class Application {
         trainer = new Trainer(1, name);
 
         // 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작
-        Pokemon startingPokemon = gs.selectStartingPokemon();
+        int startingPokemon = gs.selectStartingPokemon();
         trainer.setTrainerPokemon(startingPokemon);
 
-        Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
+        int enemyPokemon = gs.getEnemyPokemon(startingPokemon);
 
         Battle battle = Battle.getInstance();
 

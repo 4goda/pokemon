@@ -15,7 +15,7 @@ public class GameService {
     public GameService() {
     }
     
-    public Pokemon selectStartingPokemon() {
+    public int selectStartingPokemon() {
         Scanner sc = new Scanner(System.in);
 
         // TODO pokemon은 추후에 객체로 바꿔야 함
