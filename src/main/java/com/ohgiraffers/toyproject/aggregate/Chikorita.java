@@ -11,6 +11,6 @@ public class Chikorita extends Pokemon {
 
     @Override
     public String specialAttack() {
-        return null;
+        return "잎날가르기";
     }
 }

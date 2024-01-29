@@ -11,7 +11,7 @@ public class Pikachu extends Pokemon{
 
     @Override
     public String specialAttack() {
-        return null;
+        return "100만볼트";
     }
 
 }

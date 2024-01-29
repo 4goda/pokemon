@@ -25,7 +25,7 @@ public abstract class Pokemon {
         return name;
     }
 
-    public abstract String attack(int skillNum);
+//    public abstract String attack(int skillNum);
 
     public void setAttribute(Attribute attribute) {
         this.attribute = attribute;
@@ -35,6 +35,10 @@ public abstract class Pokemon {
         return sound;
     }
 
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+    
     public String attack(int skillNum){
         if(skillNum == 1)
             return defaultAttack();
@@ -55,6 +59,7 @@ public abstract class Pokemon {
 
     public boolean isAlive() {
         return isAlive;
+    }
 
     public void healPokemon(int recovery){
         hp += recovery;

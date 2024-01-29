@@ -45,7 +45,7 @@ public class TrainerService {
         switch (select) {
             case 1: this.orderAttack(selectedPokemon);
                 break;
-            case 2: this.openBag();
+            case 2: this.openBag(selectedPokemon);
                 break;
             case 3:
                 System.out.println("배틀을 종료합니다");
@@ -70,12 +70,12 @@ public class TrainerService {
     }
 
     //가방 열기
-    public void openBag() {
+    public void openBag(Pokemon pokemon) {
         Scanner sc2 = new Scanner(System.in);
         System.out.print("1. 회복약 사용 2. 몬스터볼 사용 3. 갯수 확인");
         int item = sc2.nextInt();
         switch (item) {
-            case 1: this.useHealItem();
+            case 1: this.useHealItem(pokemon);
                 break;
             case 2: this.throwingBall();
                 break;
@@ -87,9 +87,10 @@ public class TrainerService {
     }
 
     // 회복약 사용하기
-    public void useHealItem() {
+    public void useHealItem(Pokemon pokemon) {
         TrainerBag.useHealItem();
         System.out.println("포켓몬을 회복시킵니다");
+        pokemon.healPokemon(50);            // recovery 값 변경 가능
         System.out.println("남은 회복약은" + TrainerBag.getHealItemConut() + "개 입니다.");
     }
 
