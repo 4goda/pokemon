@@ -84,6 +84,8 @@ public class BattlePage {
                 battle.endBattle();
                 System.out.println("무사히 도망쳤습니다!");
                 break;
+            default:
+                System.out.println("잘못 선택하셨습니다");
         }
     }
 

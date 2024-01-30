@@ -3,16 +3,18 @@ package com.ohgiraffers.toyproject.run;
 import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
+import com.ohgiraffers.toyproject.exception.IllegalNameException;
 import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.GameService;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Application {
 
     private static final GameService gs = new GameService();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("==========================");
@@ -47,30 +49,35 @@ public class Application {
 
     private static void startNewGame() {
         Trainer trainer = null;
-        Scanner sc = new Scanner(System.in);
-        System.out.print("포켓몬 트레이너의 이름을 작성해주세요 : ");
 
-        // TODO. 트레이너 객체 추가 되면 트레이너 팀이 수정해주세요
-        String name = sc.nextLine();
-        trainer = new Trainer(1, name);
+        try{
+            Scanner sc = new Scanner(System.in);
+            System.out.print("포켓몬 트레이너의 이름을 작성해주세요 : ");
 
-        System.out.println("트레이너의 이름은 : " + name + "입니다");
-        System.out.println();
+            // TODO. 트레이너 객체 추가 되면 트레이너 팀이 수정해주세요
+            String name = sc.nextLine();
+            trainer = new Trainer(1, name);
 
-        // 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작
-        Pokemon startingPokemon = gs.selectStartingPokemon();
-        trainer.addTrainerPokemon(startingPokemon);
+            if(!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣]*$", name)){
+                throw new IllegalNameException("잘못된 이름을 입력하였습니다. 공백없이 한글 또는 영어를 입력해주세요");
+            }
 
-        Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
+            System.out.println("트레이너의 이름은 : " + name + "입니다");
+            System.out.println();
 
-        Battle battle = Battle.getInstance();
+            // 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작
+            Pokemon startingPokemon = gs.selectStartingPokemon();
+            trainer.addTrainerPokemon(startingPokemon);
 
-        BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);
-        battlePage.battlePhase();
+            Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
 
-//        final BattleService bs = new BattleService();
-//        // 설명. 배틀 시작
-//        bs.startBattle(battle);
+            Battle battle = Battle.getInstance();
+
+            BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);
+            battlePage.battlePhase();
+        } catch (IllegalNameException e) {
+            e.printStackTrace();
+        }
     }
 
 }
