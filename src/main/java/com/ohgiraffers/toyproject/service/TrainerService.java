@@ -1,6 +1,9 @@
 package com.ohgiraffers.toyproject.service;
 
 import com.ohgiraffers.toyproject.aggregate.*;
+import com.ohgiraffers.toyproject.exception.ChoiceException;
+import com.ohgiraffers.toyproject.exception.NotEnoughHealItem;
+import com.ohgiraffers.toyproject.exception.NotEnoughMonsterBall;
 import com.ohgiraffers.toyproject.repository.PokemonRepository;
 
 import java.util.Scanner;
@@ -49,7 +52,6 @@ public class TrainerService {
 
     //가방 열기
     public void openBag(Pokemon pokemon, Pokemon enemyPokemon, Battle battle) {
-        System.out.println("trainer = " + trainer);
         Scanner sc2 = new Scanner(System.in);
 
 
@@ -72,7 +74,11 @@ public class TrainerService {
                     System.out.println("가방을 닫습니다.");
                     return;
                 default:
-                    System.out.println("잘못된 선택사항 입니다.");
+                    try {
+                        throw new ChoiceException("잘못된 선택지입니다.");
+                    } catch (ChoiceException e) {
+                        e.printStackTrace();
+                    }
             }
         }
     }
@@ -87,7 +93,11 @@ public class TrainerService {
             System.out.println("남은 회복약은" + trainer.getTrainerBag().getHealItemConut() + "개 입니다.");
             battle.turnEnd();
         } else {
-            System.out.println("남은 회복약이 없습니다.");
+            try {
+                throw new NotEnoughHealItem("남은 회복약이 없습니다.");
+            } catch (NotEnoughHealItem e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -112,7 +122,11 @@ public class TrainerService {
             }
 
         } else {
-            System.out.println("남은 몬스터볼이 없습니다");
+            try {
+                throw new NotEnoughMonsterBall("남은 몬스터볼이 없습니다.");
+            } catch (NotEnoughMonsterBall e) {
+                e.printStackTrace();
+            }
         }
     }
 }
