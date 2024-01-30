@@ -8,8 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PokemonRepository {
+
+
     private ArrayList<Pokemon> pokemonList = new ArrayList<>();
     private String filePath = "src/main/java/com/ohgiraffers/toyproject/db/pokemon.dat";
+
 
     public PokemonRepository() {
         List<Pokemon> pokemons = new ArrayList<>();
@@ -62,10 +65,14 @@ public class PokemonRepository {
                     new BufferedInputStream(
                             new FileInputStream(filePath)));
 
+            // 게임 종료하지 않은 상태에서 새로 불러올 경우 초기화
+            if(!pokemonList.isEmpty()){
+                pokemonList.clear();
+            }
+
             while (true) {
                 pokemonList.add((Pokemon) ois.readObject());
             }
-
 
         } catch (EOFException e) {
             System.out.println("pokemonList = " + pokemonList);
@@ -94,6 +101,9 @@ public class PokemonRepository {
 
     }
     public ArrayList<Pokemon> getPokemonList() {
+        // 포켓몬 리스트 초기화 (체력 초기화를 위해)
+        pokemonList.clear();
+        loadPokemon();
         return pokemonList;
     }
 
