@@ -6,7 +6,6 @@ import com.ohgiraffers.toyproject.exception.NotEnoughHealItem;
 import com.ohgiraffers.toyproject.exception.NotEnoughMonsterBall;
 import com.ohgiraffers.toyproject.repository.PokemonRepository;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -29,14 +28,7 @@ public class TrainerService {
             System.out.println("2. " + pokemon.specialAttack());
 
             System.out.print("포켓몬 기술 선택: ");
-
-            int skill = -1;
-            try {
-                skill = sc.nextInt();
-            }catch (InputMismatchException e ){
-                // 아래 ChoiceException과 메세지 겹침
-                sc.nextLine();
-            }
+            int skill = sc.nextInt();
 
             switch (skill) {
                 case 1:
@@ -60,21 +52,13 @@ public class TrainerService {
 
     //가방 열기
     public void openBag(Pokemon pokemon, Pokemon enemyPokemon, Battle battle) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
 
 
         while (true) {
             System.out.println("1. 회복약 사용 2. 몬스터볼 사용 3. 갯수 확인 4. 가방 닫기");
             System.out.print("선택해주세요 : ");
-
-            int item = -1;
-            try {
-                item = sc.nextInt();
-            }catch (InputMismatchException e ){
-                // 아래 ChoiceException과 메세지 겹침
-                sc.nextLine();
-            }
-
+            int item = sc2.nextInt();
             switch (item) {
                 case 1:
                     this.useHealItem(pokemon, battle);
