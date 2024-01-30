@@ -55,16 +55,16 @@ public class BattlePage {
     }
 
     private void selectTrainerOrder(Pokemon selectedPokemon) {
-        System.out.println("==================================");
+        System.out.println("===========================================");
         System.out.println(selectedPokemon.getName() + " 의 체력은 " + selectedPokemon.getHp() + "입니다");
         System.out.println(enemyPokemon.getName() + " 의 체력은 " + enemyPokemon.getHp() + "입니다");
-        System.out.println("==================================");
+        System.out.println("===========================================");
         Scanner sc = new Scanner(System.in);
 
         System.out.println("1. 싸운다");
         System.out.println("2. 가방");
         System.out.println("3. 도망간다");
-        System.out.println("------------");
+        System.out.println("-------------------------------------------");
         System.out.print("선택해주세요 : ");
         int select = sc.nextInt();
 
@@ -72,10 +72,12 @@ public class BattlePage {
             case 1:
                 String castingSkill = ts.orderAttack(selectedPokemon);  // 사용한 스킬명 (100만볼트)
                 int calcDamage = ss.selectSkill(castingSkill);          // 스킬의 계산된 공격 데미지
-                System.out.println("castingSkill = " + castingSkill);
-                System.out.println("calcDamage = " + calcDamage);
+                System.out.println("-------------------------------------------");
+                System.out.println(trainer.getTrainerName() + "의 \"" + selectedPokemon.getName() + "\"가 사용한 기술은 \"" + castingSkill + "!!\"");
+                System.out.println(calcDamage + "의 데미지를 입혔다!");
                 bs.calcHp(calcDamage, enemyPokemon);
-                System.out.println("적 포켓몬 : " + enemyPokemon.getName() + "\nhp : " + enemyPokemon.getHp() + " 상태 : " + enemyPokemon.getIsAlive());
+//                System.out.println("적 포켓몬 : " + enemyPokemon.getName() + "\nhp : " + enemyPokemon.getHp());
+                System.out.println();
                 battle.turnEnd();
                 break;
             case 2:
@@ -101,7 +103,10 @@ public class BattlePage {
         String castingSkill = enemyPokemon.attack(random);
         int calcDamage = ss.selectSkill(castingSkill);
         bs.calcHp(calcDamage, trainerPokemon);
-        System.out.println("트레이너의 포켓몬 : " + trainerPokemon.getName() + "\nhp : " + trainerPokemon.getHp() + " 상태 : " + trainerPokemon.getIsAlive());
+        System.out.println("야생의 \"" + enemyPokemon.getName() + "\"가 사용한 기술은 \"" + castingSkill + "!!\"");
+        System.out.println(calcDamage + "의 데미지를 입었다!");
+//        System.out.println("트레이너의 포켓몬 : " + trainerPokemon.getName() + "\nhp : " + trainerPokemon.getHp());
+        System.out.println();
         battle.turnEnd();
     }
 }

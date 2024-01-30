@@ -68,8 +68,8 @@ public class PokemonRepository {
 
 
         } catch (EOFException e) {
-            System.out.println("pokemonList = " + pokemonList);
-            System.out.println("포켓몬 정보 로딩 완료");
+//            System.out.println("pokemonList = " + pokemonList);
+//            System.out.println("포켓몬 정보 로딩 완료");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
