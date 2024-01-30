@@ -9,6 +9,7 @@ import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.SkillService;
 import com.ohgiraffers.toyproject.service.TrainerService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BattlePage {
@@ -66,7 +67,14 @@ public class BattlePage {
         System.out.println("3. 도망간다");
         System.out.println("-------------------------------------------");
         System.out.print("선택해주세요 : ");
-        int select = sc.nextInt();
+
+        int select = -1;
+        try {
+            select = sc.nextInt();
+        }catch (InputMismatchException e ){
+            // 아래 ChoiceException과 메세지 겹침
+            sc.nextLine();
+        }
 
         switch (select) {
             case 1:
