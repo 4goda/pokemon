@@ -3,6 +3,7 @@ package com.ohgiraffers.toyproject.run;
 import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
+import com.ohgiraffers.toyproject.exception.ChoiceException;
 import com.ohgiraffers.toyproject.repository.PokemonRepository;
 import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.SkillService;
@@ -85,7 +86,11 @@ public class BattlePage {
                 System.out.println("무사히 도망쳤습니다!");
                 break;
             default:
-                System.out.println("잘못 선택하셨습니다");
+                try {
+                    throw new ChoiceException("잘못된 선택지입니다.");
+                } catch (ChoiceException e) {
+                    e.printStackTrace();
+                }
         }
     }
 
