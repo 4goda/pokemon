@@ -60,6 +60,10 @@ public class GameService {
                     pokemon = pr.selectPokemon("치코리타");
                     System.out.println("가랏! 치코리타!   치코치코");
                     return pokemon;
+                case 5:
+                    pokemon = pr.selectPokemon("뮤츠");
+                    System.out.println("뮤츠! 도와줘!    크와아아아아아앙ㅇㅇ");
+                    return pokemon;
                 case 9:
                     System.out.println("다음에 다시 오려무나~");
                     break;

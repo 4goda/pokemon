@@ -20,10 +20,11 @@ public class PokemonRepository {
         File file = new File(filePath);
 
         if (!file.exists()) {
-            pokemons.add(new Charmander("파이리", "파이파이", 80, Attribute.FIRE));
-            pokemons.add(new Squirtle("꼬부기", "꼬북", 70, Attribute.WATER));
-            pokemons.add(new Pikachu("피카츄", "피카", 120, Attribute.ELETRONIC));
-            pokemons.add(new Chikorita("치코리타", "치코", 60, Attribute.LEAF));
+            pokemons.add(new Charmander("파이리", "파이파이", 140, Attribute.FIRE));
+            pokemons.add(new Squirtle("꼬부기", "꼬북", 130, Attribute.WATER));
+            pokemons.add(new Pikachu("피카츄", "피카", 145, Attribute.ELETRONIC));
+            pokemons.add(new Chikorita("치코리타", "치코", 125, Attribute.LEAF));
+            pokemons.add(new Mewtwo("뮤츠", "크와아아아아앙!", 5000, Attribute.GOD));
 
             savePokemon(pokemons);
         }

@@ -4,7 +4,9 @@ public enum Attribute {
     WATER("물"),
     FIRE("불"),
     ELETRONIC("전기"),
-    LEAF("풀");
+    LEAF("풀"),
+
+    GOD("신");
 
     private final String description;
 

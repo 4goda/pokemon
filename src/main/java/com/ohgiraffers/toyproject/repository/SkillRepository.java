@@ -23,6 +23,7 @@ public class SkillRepository {
             skills.add(new Skill("물대포", 30, "물"));
             skills.add(new Skill("지진", 30, "땅"));
             skills.add(new Skill("잎날가르기", 30, "풀"));
+            skills.add(new Skill("파괴광선", 1000, "노멀"));
 
             saveSkills(skills);
         }
