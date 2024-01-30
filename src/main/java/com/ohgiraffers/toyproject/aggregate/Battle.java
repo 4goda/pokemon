@@ -3,6 +3,7 @@ package com.ohgiraffers.toyproject.aggregate;
 public class Battle {
     private static Battle battle;
     private int battleCount = 1;
+    private boolean battleOn;
 
     private Battle() {}
 
@@ -14,11 +15,12 @@ public class Battle {
         return battle;
     }
     public void startBattle() {
-        battleCount = 1;
+        battleOn = true;
         System.out.println("배틀을 시작합니다. ");
     }
 
-    public void endBattle(){
+    public void endBattle() {
+        battleOn = false;
         battleCount = 1;
         System.out.println("배틀을 종료합니다.");
     }
@@ -29,6 +31,11 @@ public class Battle {
 
     public void turnEnd() {
         battleCount++;
+        System.out.println("턴 종료되었습니다");
+    }
+
+    public boolean isBattleOn() {
+        return battleOn;
     }
 
 }
