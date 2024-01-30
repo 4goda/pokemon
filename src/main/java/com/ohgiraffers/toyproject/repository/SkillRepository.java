@@ -67,7 +67,7 @@ public class SkillRepository {
                 skillList.add((Skill) ois.readObject());
             }
         } catch (EOFException e) {
-            System.out.println("스킬 정보 모두 로딩됨...");
+            System.out.println("LOADING...");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

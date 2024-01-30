@@ -3,6 +3,7 @@ package com.ohgiraffers.toyproject.run;
 import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
+import com.ohgiraffers.toyproject.exception.ChoiceException;
 import com.ohgiraffers.toyproject.exception.IllegalNameException;
 import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.GameService;
@@ -17,9 +18,9 @@ public class Application {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("==========================");
+            System.out.println("===========================================");
             System.out.println("포켓몬스터 게임을 시작합니다");
-            System.out.println("==========================");
+            System.out.println("===========================================");
             System.out.println("1. 새로운 게임 시작");
             System.out.println("2. 게임 불러오기");
             System.out.println("3. 저장된 게임 삭제");
@@ -42,7 +43,11 @@ public class Application {
                     System.out.println("게임을 종료합니다");
                     return;
                 default:
-                    System.out.println("다시 선택해주세요");
+                    try {
+                        throw new ChoiceException("잘못된 선택지입니다.");
+                    } catch (ChoiceException e) {
+                        e.printStackTrace();
+                    }
             }
         }
     }

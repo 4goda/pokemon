@@ -32,6 +32,7 @@ public class Battle {
     public void turnEnd() {
         battleCount++;
         System.out.println("턴 종료되었습니다");
+        System.out.println("-------------------------------------------");
     }
 
     public boolean isBattleOn() {
