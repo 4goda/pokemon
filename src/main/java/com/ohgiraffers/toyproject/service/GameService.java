@@ -7,6 +7,7 @@ import com.ohgiraffers.toyproject.aggregate.Trainer;
 import com.ohgiraffers.toyproject.repository.GameRepository;
 import com.ohgiraffers.toyproject.repository.PokemonRepository;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,7 +38,14 @@ public class GameService {
             System.out.println("-------------------");
             System.out.println("9. 게임 종료");
             System.out.print("내가 선택할 포켓몬은! : ");
-            int input = sc.nextInt();
+
+            int input = -1;
+            try {
+                input = sc.nextInt();
+            }catch (InputMismatchException e ){
+                // 아래 ChoiceException과 메세지 겹침
+                sc.nextLine();
+            }
 
             switch (input) {
                 case 1:
