@@ -44,12 +44,12 @@ public class BattlePage {
         while(battle.isBattleOn()) {
             if(battle.turnCheck() % 2 == 1) {       // 홀수턴은 트레이너의 차례
                 selectTrainerOrder(selectedPokemon);
-                if(!battle.isBattleOn()) break;    // 도망쳤을 경우
+                if(!battle.isBattleOn()) break;     // 도망쳤을 경우
             } else {
                 enemyAttack(selectedPokemon);
             }
 
-            /* 설명. 전투 중인 포켓몬 둘 중 하나가 쓰러졌을 경우 전투 종료 */
+            /* 설명. 전투 중인 포켓몬 둘 중 하나가 쓰러졌을 경우 전투 종료한다 */
             if(!selectedPokemon.isAlive() || !this.enemyPokemon.isAlive()){
                 bs.endBattle(trainer.getTrainerName(), selectedPokemon, this.enemyPokemon);
                 battle.endBattle();
@@ -57,7 +57,7 @@ public class BattlePage {
         }
     }
 
-    /* 설명. 트레이너의 배틀 명령 */
+    /* 설명. 트레이너가 배틀 명령을 선택한다 */
     private void selectTrainerOrder(Pokemon selectedPokemon) {
         System.out.println("===========================================");
         System.out.println(selectedPokemon.getName() + " 의 체력은 " + selectedPokemon.getHp() + "입니다");
@@ -74,8 +74,8 @@ public class BattlePage {
         int select = -1;
         try {
             select = sc.nextInt();
-        }catch (InputMismatchException e ){     // 숫자가 아닌 문자를 입력했을 경우
-            sc.nextLine();                      // 문자를 입력했을 시 개행문자 제거
+        }catch (InputMismatchException e ){                             // 숫자가 아닌 문자를 입력했을 경우
+            sc.nextLine();                                              // 문자를 입력했을 시 개행문자 제거
         }
 
         switch (select) {
@@ -106,7 +106,7 @@ public class BattlePage {
         }
     }
 
-    /* 설명. 적 포켓몬이 트레이너의 포켓몬을 랜덤한 스킬로 공격 */
+    /* 설명. 적 포켓몬이 트레이너의 포켓몬을 랜덤한 스킬로 공격한다 */
     private void enemyAttack(Pokemon trainerPokemon) {
         int random = (int) (Math.random() * 2 + 1);
         String castingSkill = enemyPokemon.attack(random);

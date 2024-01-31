@@ -1,6 +1,5 @@
 package com.ohgiraffers.toyproject.service;
 
-import com.ohgiraffers.toyproject.aggregate.Battle;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
 
 public class BattleService {
