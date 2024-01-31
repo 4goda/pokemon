@@ -19,6 +19,7 @@ public class PokemonRepository {
 
         File file = new File(filePath);
 
+        /* 설명. 포켓몬 파일이 존재하지 않으면 파일로 데이터를 생성한다. */
         if (!file.exists()) {
             pokemons.add(new Charmander("파이리", "파이파이", 140, Attribute.FIRE));
             pokemons.add(new Squirtle("꼬부기", "꼬북", 130, Attribute.WATER));
@@ -34,6 +35,7 @@ public class PokemonRepository {
     }
 
 
+    /* 설명. 포켓몬 리스트를 받아와 Object단위로 파일에 저장한다. */
     private void savePokemon(List<Pokemon> pokemons) {
         ObjectOutputStream oos = null;
         try {
@@ -58,6 +60,7 @@ public class PokemonRepository {
         }
     }
 
+    /* 설명. 포켓몬 리스트에 존재하는 포켓몬들을 Object단위로 파일에서 로딩해 저장한다. */
     private void loadPokemon() {
         ObjectInputStream ois = null;
         try {
@@ -91,6 +94,7 @@ public class PokemonRepository {
     }
 
 
+    /* 설명. 전달된 포켓몬의 이름을 리스트에서 찾아 해당하는 포켓몬 객체를 반환한다. */
     public Pokemon selectPokemon(String pokemonName) {
         for (int i = 0; i < pokemonList.size(); i++) {
             // 포켓몬 DB에서 이름으로 객체 반환
@@ -98,10 +102,10 @@ public class PokemonRepository {
         }
 
         return null;
-
     }
+
+    /* 설명. 체력 초기화를 위해 포켓몬 리스트를 초기화한다. */
     public ArrayList<Pokemon> getPokemonList() {
-        // 포켓몬 리스트 초기화 (체력 초기화를 위해)
         pokemonList.clear();
         loadPokemon();
         return pokemonList;

@@ -42,7 +42,6 @@ public class GameService {
             try {
                 input = sc.nextInt();
             }catch (InputMismatchException e ){
-                // 아래 ChoiceException과 메세지 겹침
                 sc.nextLine();
             }
 
@@ -86,16 +85,14 @@ public class GameService {
         int mewtwoRandom = (int)(Math.random() * 100);
 
         do {
-            if(mewtwoRandom < 10) {              // 10% 확률로 뮤츠를 적으로 만난다
+            if(mewtwoRandom < 10) {                                             // 10% 확률로 뮤츠를 적으로 만난다
                 enemyPokemon = pr.getPokemonList().stream()
                         .filter(pokemon -> "뮤츠".equals(pokemon.getName()))
                         .findFirst()
                         .orElse(null);
-                System.out.println("enemyPokemon = " + enemyPokemon);
             } else {
                 int random = (int) (Math.random() * (pokemonList.size() - 1));  // 리스트 마지막에 있는 뮤츠는 제외
                 enemyPokemon = pokemonList.get(random);
-                System.out.println("enemyPokemon = " + enemyPokemon);
             }
         }while (startingPokemon.equals(enemyPokemon));
 
