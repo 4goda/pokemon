@@ -19,7 +19,7 @@ public class GameService {
     public GameService() {
     }
 
-    /* 설명. 트레이너가 첫 포켓몬을 고르는 기능. */
+    /* 설명. 트레이너가 첫 포켓몬을 선택한다. */
     public Pokemon selectStartingPokemon() {
         Scanner sc = new Scanner(System.in);
 
@@ -77,7 +77,7 @@ public class GameService {
         }
     }
 
-    /* 설명. 트레이너가 고른 포켓몬과 다른 적 포켓몬을 랜덤으로 가져온다 */
+    /* 설명. 트레이너가 고른 포켓몬과 다른 적 포켓몬을 랜덤으로 가져온다. */
     public Pokemon getEnemyPokemon(Pokemon startingPokemon) {
         Pokemon enemyPokemon = null;
         List<Pokemon> pokemonList = pr.getPokemonList();
