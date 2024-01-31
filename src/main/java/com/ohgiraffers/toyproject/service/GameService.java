@@ -10,10 +10,9 @@ import com.ohgiraffers.toyproject.repository.PokemonRepository;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class GameService {
-
-    /* TODO. 아직 게임 저장/불러오기 없으니 GameService에서 대부분 처리한다 */
     private final GameRepository gr = new GameRepository();
     private final PokemonRepository pr = new PokemonRepository();
 
@@ -23,7 +22,6 @@ public class GameService {
     public Pokemon selectStartingPokemon() {
         Scanner sc = new Scanner(System.in);
 
-        // TODO pokemon은 추후에 객체로 바꿔야 함
         Pokemon pokemon = null;
 
         while (true) {
@@ -83,14 +81,25 @@ public class GameService {
         }
     }
 
+    /* 설명. 트레이너가 고른 포켓몬과 다른 적 포켓몬을 랜덤으로 가져온다 */
     public Pokemon getEnemyPokemon(Pokemon startingPokemon) {
         Pokemon enemyPokemon = null;
         List<Pokemon> pokemonList = pr.getPokemonList();
 
-        // enemyPokemon = 포켓몬 db에서 startingPokemon을 제외한 포켓몬 중 한 마리 선택
+        int mewtwoRandom = (int)(Math.random() * 100);
+
         do {
-            int random = (int) (Math.random() * pokemonList.size());
-            enemyPokemon = pokemonList.get(random);
+            if(mewtwoRandom < 10) {              // 10% 확률로 뮤츠를 적으로 만난다
+                enemyPokemon = pr.getPokemonList().stream()
+                        .filter(pokemon -> "뮤츠".equals(pokemon.getName()))
+                        .findFirst()
+                        .orElse(null);
+                System.out.println("enemyPokemon = " + enemyPokemon);
+            } else {
+                int random = (int) (Math.random() * (pokemonList.size() - 1));  // 리스트 마지막에 있는 뮤츠는 제외
+                enemyPokemon = pokemonList.get(random);
+                System.out.println("enemyPokemon = " + enemyPokemon);
+            }
         }while (startingPokemon.equals(enemyPokemon));
 
         return enemyPokemon;
