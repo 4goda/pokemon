@@ -1,8 +1,0 @@
-diff a/src/main/java/com/ohgiraffers/toyproject/exception/ChoiceException.java b/src/main/java/com/ohgiraffers/toyproject/exception/ChoiceException.java	(rejected hunks)
-@@ -1,5 +1,6 @@
- package com.ohgiraffers.toyproject.exception;
- 
-+/*설명. 사용자가 선택지에 없는 번호를 입력했을 경우에 발생하는 예외 처리*/
- public class ChoiceException extends Exception{
-     public ChoiceException(String message) {
-         super(message);
