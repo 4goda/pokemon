@@ -5,7 +5,6 @@ import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
 import com.ohgiraffers.toyproject.exception.ChoiceException;
 import com.ohgiraffers.toyproject.exception.IllegalNameException;
-import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.GameService;
 
 import java.util.InputMismatchException;
@@ -33,7 +32,6 @@ public class Application {
             try {
                 input = sc.nextInt();
             }catch (InputMismatchException e ){
-                // 아래 ChoiceException과 메세지 겹침
                 sc.nextLine();
             }
 
@@ -42,10 +40,10 @@ public class Application {
                     startNewGame();
                     break;
                 case 2:
-//                    gs.loadGame();
+//                    loadGame();
                     break;
                 case 3:
-//                    gs.deleteGame();
+//                    deleteGame();
                     break;
                 case 9:
                     System.out.println("게임을 종료합니다");
@@ -83,6 +81,7 @@ public class Application {
             trainer.addTrainerPokemon(startingPokemon);
 
             Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
+
             /* 설명. 배틀을 시작한다. */
             Battle battle = Battle.getInstance();
 

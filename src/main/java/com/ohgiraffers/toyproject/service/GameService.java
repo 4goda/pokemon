@@ -1,16 +1,12 @@
 package com.ohgiraffers.toyproject.service;
 
-import com.ohgiraffers.toyproject.aggregate.Battle;
-import com.ohgiraffers.toyproject.aggregate.Pikachu;
 import com.ohgiraffers.toyproject.aggregate.Pokemon;
-import com.ohgiraffers.toyproject.aggregate.Trainer;
 import com.ohgiraffers.toyproject.repository.GameRepository;
 import com.ohgiraffers.toyproject.repository.PokemonRepository;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class GameService {
     private final GameRepository gr = new GameRepository();
