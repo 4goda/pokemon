@@ -1,10 +1,8 @@
 package com.ohgiraffers.toyproject.service;
 
-
 import com.ohgiraffers.toyproject.aggregate.Skill;
 import com.ohgiraffers.toyproject.repository.SkillRepository;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SkillService {
@@ -14,36 +12,38 @@ public class SkillService {
     public SkillService() {
     }
 
+    /* 설명. 포켓몬 전체 스킬 선택하기  */
     public void selectAllSkills() {
         List<Skill> selectedSkills = sr.selectAllSkills();
 
-        System.out.println("===== SkillService으로 반환 됨 =====");
         for(Skill s : selectedSkills) {
             System.out.println(s);
         }
     }
 
+    /* 설명. 포켓몬 스킬 선택하기 */
     public int selectSkill(String name) {
         Skill selectedSkill = sr.selectSkill(name);
 
+        /* 설명. 포켓몬 스킬을 선택하면 스킬의 데미지 리턴하기 */
         if(selectedSkill != null) {
-//            System.out.println("조회한 스킬은 : " + selectedSkill);
             int calcDamage = calculateSkillDamage(selectedSkill);
-//            System.out.println("저장된 데미지 : " + selectedSkill.getDamage() + ", " + "계산된 데미지 : " + calcDamage);
+
             return calcDamage;
         }
+
+        /* 설명. 존재하지 않은 스킬을 선택했을 때 */
         System.out.println("존재하지 않는 스킬 이름 입니다");
+
         return 0;
-
-
     }
 
-
+    /* 설명. 포켓몬의 스킬 데미지 계산 */
     public int calculateSkillDamage(Skill skill) {
-        int randDamage = (int)(Math.random() * 10 + 1 - 5); // -5 ~ 5 사이에 랜덤 데미지 발생
+
+        /* 설명. -5 ~ 5 사이에 랜덤 데미지 발생 */
+        int randDamage = (int)(Math.random() * 10 + 1 - 5);
 
         return skill.getDamage() + randDamage;
     }
-
-    // 데미지 계산
 }
