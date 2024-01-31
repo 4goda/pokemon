@@ -18,7 +18,8 @@ public class GameService {
 
     public GameService() {
     }
-    
+
+    /* 설명. 트레이너가 첫 포켓몬을 고르는 기능. */
     public Pokemon selectStartingPokemon() {
         Scanner sc = new Scanner(System.in);
 
@@ -49,22 +50,18 @@ public class GameService {
 
             switch (input) {
                 case 1:
-//                    pokemon = new Pikachu();
                     pokemon = pr.selectPokemon("피카츄");
                     System.out.println("가랏! 피카츄!     피까피까");
                     return pokemon;
                 case 2:
-//                    pokemon = new "파이리";
                     pokemon = pr.selectPokemon("파이리");
                     System.out.println("가랏! 파이리!     파이파이");
                     return pokemon;
                 case 3:
-//                    pokemon = new "꼬부기";
                     pokemon = pr.selectPokemon("꼬부기");
                     System.out.println("가랏! 꼬부기!     꼬북꼬북");
                     return pokemon;
                 case 4:
-//                    pokemon = new "이상해씨";
                     pokemon = pr.selectPokemon("치코리타");
                     System.out.println("가랏! 치코리타!   치코치코");
                     return pokemon;

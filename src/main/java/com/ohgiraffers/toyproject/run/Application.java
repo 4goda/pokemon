@@ -16,6 +16,7 @@ public class Application {
 
     private static final GameService gs = new GameService();
 
+    /* 설명. 포켓몬스터 게임 메뉴 출력 기능*/
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -59,6 +60,7 @@ public class Application {
         }
     }
 
+    /* 설명. 트레이너 이름과 트레이너 포켓몬을 정하는 기능*/
     private static void startNewGame() {
         Trainer trainer = null;
 
@@ -66,7 +68,6 @@ public class Application {
             Scanner sc = new Scanner(System.in);
             System.out.print("포켓몬 트레이너의 이름을 작성해주세요 : ");
 
-            // TODO. 트레이너 객체 추가 되면 트레이너 팀이 수정해주세요
             String name = sc.nextLine();
             trainer = new Trainer(1, name);
 
@@ -82,7 +83,7 @@ public class Application {
             trainer.addTrainerPokemon(startingPokemon);
 
             Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
-
+            /* 설명. 배틀 시작하는 기능 실행*/
             Battle battle = Battle.getInstance();
 
             BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);
