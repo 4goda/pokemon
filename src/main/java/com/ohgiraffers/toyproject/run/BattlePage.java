@@ -33,19 +33,23 @@ public class BattlePage {
     }
 
     public void battlePhase() {
-        // 설명. 제일 앞에있는 포켓몬을 꺼낸다
+
+        /* 설명. 트레이너가 보유한 포켓몬 중 제일 앞에있는 포켓몬을 꺼낸다 */
         Pokemon selectedPokemon = pr.selectPokemon(trainer.getTrainerPokemon(0));
         System.out.println();
         System.out.println("앗! 야생의 " + enemyPokemon.getName() + " 이(가) 나타났다!");
         System.out.println();
-        //while(bs.endBattle() 호출 될 때까지){
+
         while(battle.isBattleOn()) {
-            if(battle.turnCheck() % 2 == 1) {
+
+            if(battle.turnCheck() % 2 == 1) {       // 홀수턴은 트레이너의 차례
                 selectTrainerOrder(selectedPokemon);
                 if(!battle.isBattleOn()) break;    // 도망쳤을 경우
             } else {
                 enemyAttack(selectedPokemon);
             }
+
+            /* 설명. 전투 중인 포켓몬 둘 중 하나가 쓰러졌을 경우 전투 종료 */
             if(!selectedPokemon.isAlive() || !this.enemyPokemon.isAlive()){
                 bs.endBattle(trainer.getTrainerName(), selectedPokemon, this.enemyPokemon);
                 battle.endBattle();
