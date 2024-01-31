@@ -12,7 +12,7 @@ public class BattleService {
             return;
         }
         pokemon.receiveDamage(calcDamage);
-        if(!pokemon.getIsAlive()) {
+        if(!pokemon.isAlive()) {
             System.out.println(pokemon.getName() + "이(가) 쓰러졌습니다");
         }
     }
