@@ -5,9 +5,9 @@ import com.ohgiraffers.toyproject.aggregate.Pokemon;
 import com.ohgiraffers.toyproject.aggregate.Trainer;
 import com.ohgiraffers.toyproject.exception.ChoiceException;
 import com.ohgiraffers.toyproject.exception.IllegalNameException;
-import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.GameService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -15,6 +15,7 @@ public class Application {
 
     private static final GameService gs = new GameService();
 
+    /* 설명. 포켓몬스터 게임 메뉴를 선택한다. */
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -27,17 +28,22 @@ public class Application {
             System.out.println("9. 게임 종료");
             System.out.print("메뉴를 선택해 주세요 : ");
 
-            int input = sc.nextInt();
+            int input = -1;
+            try {
+                input = sc.nextInt();
+            }catch (InputMismatchException e ){
+                sc.nextLine();
+            }
 
             switch (input) {
                 case 1:
                     startNewGame();
                     break;
                 case 2:
-//                    gs.loadGame();
+//                    loadGame();
                     break;
                 case 3:
-//                    gs.deleteGame();
+//                    deleteGame();
                     break;
                 case 9:
                     System.out.println("게임을 종료합니다");
@@ -52,6 +58,7 @@ public class Application {
         }
     }
 
+    /* 설명. 트레이너 이름과 트레이너 포켓몬을 정한다. */
     private static void startNewGame() {
         Trainer trainer = null;
 
@@ -59,7 +66,6 @@ public class Application {
             Scanner sc = new Scanner(System.in);
             System.out.print("포켓몬 트레이너의 이름을 작성해주세요 : ");
 
-            // TODO. 트레이너 객체 추가 되면 트레이너 팀이 수정해주세요
             String name = sc.nextLine();
             trainer = new Trainer(1, name);
 
@@ -70,12 +76,13 @@ public class Application {
             System.out.println("트레이너의 이름은 : " + name + "입니다");
             System.out.println();
 
-            // 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작
+            /* 설명. 트레이너 정보가 객체에 저장된 경우 [포켓몬 선택] 시작한다. */
             Pokemon startingPokemon = gs.selectStartingPokemon();
             trainer.addTrainerPokemon(startingPokemon);
 
             Pokemon enemyPokemon = gs.getEnemyPokemon(startingPokemon);
 
+            /* 설명. 배틀을 시작한다. */
             Battle battle = Battle.getInstance();
 
             BattlePage battlePage = new BattlePage(battle, trainer, enemyPokemon);

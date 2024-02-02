@@ -8,7 +8,9 @@ import java.util.List;
 
 public class SkillRepository {
     private String filePath = "src/main/java/com/ohgiraffers/toyproject/db/skill.dat";
-    private List<Skill> skillList = new ArrayList<>();      // 불러오기용 List
+
+    /* 설명. 스킬 리스트를 불러온다. */
+    private List<Skill> skillList = new ArrayList<>();
 
     public SkillRepository() {
 
@@ -16,6 +18,7 @@ public class SkillRepository {
 
         File file = new File(filePath);
 
+        /* 설명. 파일이 없으면 스킬 리스트를 생성한다. */
         if(!file.exists()){
             skills.add(new Skill("몸통 박치기", 20, "노멀"));
             skills.add(new Skill("100만볼트", 30, "전기"));
@@ -31,6 +34,7 @@ public class SkillRepository {
         loadSkills();
     }
 
+    /* 설명. 스킬리스트 세이브 파일 예외를 처리한다. */
     public void  saveSkills(List<Skill> skills) {
         ObjectOutputStream oos = null;
 
@@ -56,6 +60,7 @@ public class SkillRepository {
 
     }
 
+    /* 설명. 스킬리스트 불러올 때 발생 되는 예외를 처리한다. */
     private void loadSkills() {
         ObjectInputStream ois = null;
         try {

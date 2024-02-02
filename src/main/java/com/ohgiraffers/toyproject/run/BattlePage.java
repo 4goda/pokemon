@@ -9,6 +9,7 @@ import com.ohgiraffers.toyproject.service.BattleService;
 import com.ohgiraffers.toyproject.service.SkillService;
 import com.ohgiraffers.toyproject.service.TrainerService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BattlePage {
@@ -31,29 +32,32 @@ public class BattlePage {
         this.enemyPokemon = enemyPokemon;
     }
 
+    /* 설명. 배틀페이지를 연다 */
     public void battlePhase() {
-        // 설명. 제일 앞에있는 포켓몬을 꺼낸다
+
+        /* 설명. 트레이너가 보유한 포켓몬 중 제일 앞에있는 포켓몬을 꺼낸다 */
         Pokemon selectedPokemon = pr.selectPokemon(trainer.getTrainerPokemon(0));
         System.out.println();
         System.out.println("앗! 야생의 " + enemyPokemon.getName() + " 이(가) 나타났다!");
         System.out.println();
-        //while(bs.endBattle() 호출 될 때까지){
+
         while(battle.isBattleOn()) {
-            if(battle.turnCheck() % 2 == 1) {
+            if(battle.turnCheck() % 2 == 1) {       // 홀수턴은 트레이너의 차례
                 selectTrainerOrder(selectedPokemon);
-                if(!battle.isBattleOn()) break;    // 도망쳤을 경우
+                if(!battle.isBattleOn()) break;     // 도망쳤을 경우
             } else {
                 enemyAttack(selectedPokemon);
             }
+
+            /* 설명. 전투 중인 포켓몬 둘 중 하나가 쓰러졌을 경우 전투 종료한다 */
             if(!selectedPokemon.isAlive() || !this.enemyPokemon.isAlive()){
                 bs.endBattle(trainer.getTrainerName(), selectedPokemon, this.enemyPokemon);
                 battle.endBattle();
             }
         }
-
-
     }
 
+    /* 설명. 트레이너가 배틀 명령을 선택한다 */
     private void selectTrainerOrder(Pokemon selectedPokemon) {
         System.out.println("===========================================");
         System.out.println(selectedPokemon.getName() + " 의 체력은 " + selectedPokemon.getHp() + "입니다");
@@ -66,24 +70,30 @@ public class BattlePage {
         System.out.println("3. 도망간다");
         System.out.println("-------------------------------------------");
         System.out.print("선택해주세요 : ");
-        int select = sc.nextInt();
+
+        int select = -1;
+        try {
+            select = sc.nextInt();
+        }catch (InputMismatchException e ){                             // 숫자가 아닌 문자를 입력했을 경우
+            sc.nextLine();                                              // 문자를 입력했을 시 개행문자 제거
+        }
 
         switch (select) {
             case 1:
-                String castingSkill = ts.orderAttack(selectedPokemon);  // 사용한 스킬명 (100만볼트)
+                String castingSkill = ts.orderAttack(selectedPokemon);  // 사용한 스킬명
                 int calcDamage = ss.selectSkill(castingSkill);          // 스킬의 계산된 공격 데미지
+
                 System.out.println("-------------------------------------------");
                 System.out.println(trainer.getTrainerName() + "의 \"" + selectedPokemon.getName() + "\"가 사용한 기술은 \"" + castingSkill + "!!\"");
                 System.out.println(calcDamage + "의 데미지를 입혔다!");
                 bs.calcHp(calcDamage, enemyPokemon);
-//                System.out.println("적 포켓몬 : " + enemyPokemon.getName() + "\nhp : " + enemyPokemon.getHp());
                 System.out.println();
                 battle.turnEnd();
                 break;
-            case 2:
+            case 2:                                                     // 가방 열기
                 ts.openBag(selectedPokemon, enemyPokemon, battle);
                 break;
-            case 3:
+            case 3:                                                     // 도망치기
                 battle.endBattle();
                 System.out.println("무사히 도망쳤습니다!");
                 break;
@@ -96,17 +106,17 @@ public class BattlePage {
         }
     }
 
+    /* 설명. 적 포켓몬이 트레이너의 포켓몬을 랜덤한 스킬로 공격한다 */
     private void enemyAttack(Pokemon trainerPokemon) {
-        // 포켓몬의 공격
-        // TODO. 포켓몬 스킬은 랜덤 발동으로 할 것
         int random = (int) (Math.random() * 2 + 1);
         String castingSkill = enemyPokemon.attack(random);
         int calcDamage = ss.selectSkill(castingSkill);
         bs.calcHp(calcDamage, trainerPokemon);
+
         System.out.println("야생의 \"" + enemyPokemon.getName() + "\"가 사용한 기술은 \"" + castingSkill + "!!\"");
         System.out.println(calcDamage + "의 데미지를 입었다!");
-//        System.out.println("트레이너의 포켓몬 : " + trainerPokemon.getName() + "\nhp : " + trainerPokemon.getHp());
         System.out.println();
+
         battle.turnEnd();
     }
 }
