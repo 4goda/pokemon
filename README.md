@@ -29,6 +29,26 @@
         - 회복약 사용 및 포켓몬 체력 회복
         - 포켓몬볼 던지기
 
+# 🙌 실행화면
+
+<details>
+         <summary><b> 트레이너 포켓몬 및 적 포켓몬 선정</b></summary>
+         <p><img src="https://github.com/4goda/pokemon/blob/main/capture/%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%84%88_%ED%8F%AC%EC%BC%93%EB%AA%AC_%EC%A0%81_%ED%8F%AC%EC%BC%93%EB%AA%AC_%EC%84%A0%ED%83%9D.png"/></p>
+</details>
+<details>
+         <summary><b>포켓몬 공격 - 기술 사용</b></summary>
+         <p><img src="https://github.com/4goda/pokemon/blob/main/capture/%EA%B8%B0%EC%88%A0%EC%82%AC%EC%9A%A9.png"/></p>
+</details>
+<details>
+         <summary><b>회복약 사용</b></summary>
+         <p><img src="https://github.com/4goda/pokemon/blob/main/capture/%ED%9A%8C%EB%B3%B5%EC%95%BD_%EC%82%AC%EC%9A%A9.png"/></p>
+</details>
+<details>
+         <summary><b>포켓몬 볼 사용</b></summary>
+         <p><img src="https://github.com/4goda/pokemon/blob/main/capture/%ED%8F%AC%EC%BC%93%EB%AA%AC%EB%B3%BC_%EC%82%AC%EC%9A%A9.png"/></p>
+</details>
+
+
 # 🖥️ 패키지/클래스
 
 ## aggregate
